@@ -1,0 +1,9 @@
+server:
+  port: 4525
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    enableSelfPreservation: true

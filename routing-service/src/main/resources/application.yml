@@ -1,0 +1,60 @@
+info:
+  component: Edge Server
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+# spring : 
+#    security:
+#      user:
+#       name: user
+#       password: user
+
+zuul:
+  prefix: /api
+  routes:
+    employee:
+      path: /employees/**
+      serviceId: employee-service
+    payroll:
+      path: /contrats/**
+      serviceId: contrat-service
+    position:
+      path: /positions/**
+      serviceId: position-service
+    recruitement:
+      path: /recruitements/**
+      serviceId: recruitement-service
+    conges:
+      path: /conges/**
+      serviceId: conge-service
+    user:
+      path: /users/**
+      serviceId: user-service
+
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:4525/eureka/
+
+spring:
+   application:
+     name: routing-service
+
+server:
+  port: 8050
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+
